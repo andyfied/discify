@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router'
-import App from './App';
-import Track from './Track';
-import Result from './Result';
-import NoMatch from './NoMatch';
+import App from './components/App';
+import Track from './components/Track';
+import Result from './components/Result';
+import NoMatch from './components/NoMatch';
 import './index.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
