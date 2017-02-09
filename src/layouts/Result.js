@@ -8,7 +8,7 @@ class Result extends Component {
     return (
       <div>
         <h1>Results</h1>
-        <h2>Score: { 0 }</h2>
+        <h2>Score: { this.props.score }</h2>
         <h3>Details</h3>
         <RaisedButton
           label="Play again!"
