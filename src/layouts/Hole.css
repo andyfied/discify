@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  text-shadow: 0px 1px 1px #757575;
+  color: #F5F5F5;
+}
+
+.scorer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.scorer h1 {
+  font-size: 25vw;
+  color: #FF9800;
+  text-shadow: 0px 2px 1px #E65100;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+}

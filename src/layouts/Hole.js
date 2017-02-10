@@ -1,48 +1,63 @@
 import React from 'react';
+import './Hole.css';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
-import NavButton from '../components/NavButton';
+import AppBar from 'material-ui/AppBar';
+import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
+import { Link } from 'react-router';
+import IconButton from 'material-ui/IconButton';
+import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
+import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
+
 
 const Hole = ({ score, holeNumber, onIncrementClick, onDecrementClick }) => {
-  //THis might not be the most pritty solution
-  if (!score) {
-    //onAddHole(holeNumber);
-  }
   return (
-    <div>
-      <NavButton
-        enabled={ true }
-        label="End game"
-        link={ "/track/results" }
+    <div className="wrapper">
+      <AppBar
+        title={ "Hole " + holeNumber }
+        className="header"
+        showMenuIconButton={ false }
+        iconElementRight={
+          <FlatButton 
+            label="End game" 
+            containerElement={ <Link to={ "/track/results" } /> }
+          />
+        }
       />
-      <h1>Hole { holeNumber }</h1>
-      <FloatingActionButton
-        onClick={() => onDecrementClick(holeNumber)}
-      >
-        <ContentRemove />
-      </FloatingActionButton>
+      <div className="main">
+        <div className="scorer">
+          <FloatingActionButton
+            onClick={() => onDecrementClick(holeNumber)}
+          >
+            <ContentRemove />
+          </FloatingActionButton>
 
-      <h1>{ score }</h1>
+          <h1>{ score }</h1>
 
-      <FloatingActionButton
-        onClick={ () => onIncrementClick(holeNumber) }
-      >
-        <ContentAdd />
-      </FloatingActionButton>
-
-      <div>
-        <NavButton
-          enabled={ holeNumber <= 1 ? false : true }
-          label="Prev"
-          link={ "/track/" + (Number(holeNumber) - 1) }
-        />
-        <NavButton
-          enabled={ true }
-          label="Next"
-          link={ "/track/" + (Number(holeNumber) + 1) }
-        />
+          <FloatingActionButton
+            onClick={ () => onIncrementClick(holeNumber) }
+          >
+            <ContentAdd />
+          </FloatingActionButton>
+        </div>
       </div>
+
+      <Paper className="footer">
+        <IconButton
+          disabled={ holeNumber <= 1 ? true : false }
+          containerElement={ <Link to={ "/track/" + (Number(holeNumber) - 1) } /> }
+        >
+          <ChevronLeft />
+        </IconButton>
+        <IconButton
+          
+          containerElement={ <Link to={ "/track/" + (Number(holeNumber) + 1) } /> }
+        >
+          <ChevronRight />
+        </IconButton>
+      </Paper>
     </div>
   );
 };
