@@ -5,6 +5,7 @@
 export const INCREMENT_SCORE = 'INCREMENT_SCORE';
 export const DECREMENT_SCORE = 'DECREMENT_SCORE';
 export const ADD_HOLE = 'ADD_HOLE';
+export const CLEAR_SCORE = 'CLEAR_SCORE';
 
 
 export const incrementScore = (holeNumber) => {
@@ -17,4 +18,8 @@ export const decrementScore = (holeNumber) => {
 
 export const addHole = (holeNumber) => {
     return { type: ADD_HOLE, holeNumber: holeNumber }
+}
+
+export const clearScore = () => {
+    return { type: CLEAR_SCORE }
 }

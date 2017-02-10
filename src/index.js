@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router'
-import App from './components/App';
+import App from './connectors/App';
 import Result from './connectors/Result';
 import NoMatch from './components/NoMatch';
 import Hole from './connectors/Hole';

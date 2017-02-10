@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { INCREMENT_SCORE, DECREMENT_SCORE, ADD_HOLE } from '../actions/actions';
+import { INCREMENT_SCORE, DECREMENT_SCORE, ADD_HOLE, CLEAR_SCORE } from '../actions/actions';
 
 /*
  * state = {<holeNumber>: <score>}
@@ -18,6 +18,8 @@ const holes = (state = {}, action) => {
 		case DECREMENT_SCORE:
 			let decrementedScore = state[action.holeNumber] - 1;
 			return Object.assign({}, state, { [action.holeNumber]: decrementedScore });
+		case CLEAR_SCORE:
+			return {};
 		default:
 			return state;
 	}
