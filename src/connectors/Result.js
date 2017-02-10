@@ -7,11 +7,21 @@ const getTotalScore = (holes) => {
     } else {
         return 0;
     }
+};
+
+const getLastHole = (holes) => {
+    if (holes) {
+        var holeNumbers = Object.keys(holes);
+        return holeNumbers[holeNumbers.length -1];
+    }
+
+    return 0;
 }
 
 const mapStateToProps = (state) => ({
-    score: getTotalScore(state.holes)
-})
+    score: getTotalScore(state.holes),
+    lastHole: getLastHole(state.holes)
+});
 
 const Result = connect(
     mapStateToProps

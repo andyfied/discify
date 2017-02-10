@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router';
+import AppBar from 'material-ui/AppBar';
+import Paper from 'material-ui/Paper';
+import './result.css';
 
 class Result extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Results</h1>
-        <h2>Score: { this.props.score }</h2>
-        <h3>Details</h3>
-        <RaisedButton
-          label="Play again!"
-          primary={ true }
-          containerElement={ <Link to="/track/1" /> }
+      <div className="wrapper">
+        <AppBar 
+          title="Results"
+          className="header"
+          showMenuIconButton={ false }
+          iconElementRight={
+          <FlatButton 
+            label="New game"
+            containerElement={ <Link to={ "/" } /> }
+          />
+        }
         />
+        <div className="main result">
+          <h1>{ this.props.score }</h1>
+        </div>
+        <Paper className="footer">
+          <FlatButton
+            label="Resume game"
+            primary={ true }
+            containerElement={ <Link to={ "/track/" + this.props.lastHole } /> }
+          />
+        </Paper>
       </div>
     );
   }
