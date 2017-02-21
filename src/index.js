@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, hashHistory } from 'react-router'
 import App from './connectors/App';
 import Result from './connectors/Result';
 import NoMatch from './components/NoMatch';
@@ -48,7 +48,7 @@ ReactDOM.render((
   
   <Provider store={ store }>
     <MuiThemeProvider muiTheme={ muiTheme }>
-      <Router history={ browserHistory }>
+      <Router history={ hashHistory }>
         <Route path="/" component={ App } />
         <Route path="/track/results" component={ Result } />
         <Route path="/track/:holeNumber" component={ Hole } />
