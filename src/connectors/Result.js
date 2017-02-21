@@ -3,7 +3,13 @@ import ResultLayout from '../layouts/Result';
 
 const getTotalScore = (holes) => {
     if (holes && Object.keys(holes).length > 0) {
-        return Object.values(holes).reduce((a, b) => a + b);
+        //create-react-app does not seem to support es2017 for the moment
+        //return Object.values(holes).reduce((a, b) => a + b);
+        let score = 0;
+        for (let key of Object.keys(holes)) {
+            score += holes[key];
+        }
+        return score;
     } else {
         return 0;
     }
