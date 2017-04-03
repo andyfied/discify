@@ -11,7 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {grey800, lime100, lime500} from 'material-ui/styles/colors';
+import {grey800, lime100, lime600} from 'material-ui/styles/colors';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
@@ -27,7 +27,7 @@ injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: lime500,
+    primary1Color: lime600,
     //primary2Color: cyan700,
     //primary3Color: grey400,
     //accent1Color: pinkA200,

@@ -9,11 +9,10 @@
 .App h1 {
   font-size: 20vw;
   color: #FF9800;
-  text-shadow: 0px 2px 1px #E65100;
+  text-shadow: 0px 3px 2px #E65100;
 }
 
 .App h2 {
-  text-shadow: 0px 1px 1px #757575;
-  color: #FAFAFA;
+  color: #757575;
   margin-top: 0;
 }
