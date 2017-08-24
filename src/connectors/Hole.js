@@ -1,23 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { incrementScore, decrementScore, addHole } from '../actions/actions';
-import HoleLayout from '../layouts/Hole';
+import React from 'react'
+import { connect } from 'react-redux'
+import { incrementScore, decrementScore, addHole } from '../actions/holes'
+import { decrementTotalScore, incrementTotalScore } from '../actions/results'
+import HoleLayout from '../layouts/Hole'
 
 
 const mapStateToProps = (state, ownProps) => {
   return {
     score: state.holes[ownProps.params.holeNumber],
+    totalScore: state.results.totalScore,
     holeNumber: ownProps.params.holeNumber
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementClick: (holeNumber) => {
       dispatch(incrementScore(holeNumber));
+      dispatch(incrementTotalScore());
     },
     onDecrementClick: (holeNumber) => {
       dispatch(decrementScore(holeNumber));
+      dispatch(decrementTotalScore());
     },
     onAddHole: (holeNumber) => {
       dispatch(addHole(holeNumber));
@@ -40,11 +44,12 @@ class _Hole extends React.Component {
     return (
       <HoleLayout
         score={ this.props.score }
+        totalScore={ this.props.totalScore }
         holeNumber={ this.props.holeNumber }
         onIncrementClick={ this.props.onIncrementClick }
         onDecrementClick={ this.props.onDecrementClick }
       />
-    );
+    )
   }
 }
 
@@ -53,4 +58,4 @@ mapStateToProps,
 mapDispatchToProps
 )(_Hole)
 
-export default Hole;
+export default Hole

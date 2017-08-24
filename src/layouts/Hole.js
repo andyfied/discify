@@ -1,18 +1,18 @@
-import React from 'react';
-import './Hole.css';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import ContentRemove from 'material-ui/svg-icons/content/remove';
-import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
-import Paper from 'material-ui/Paper';
-import { Link } from 'react-router';
-import IconButton from 'material-ui/IconButton';
-import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
-import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
+import React from 'react'
+import './Hole.css'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import ContentRemove from 'material-ui/svg-icons/content/remove'
+import AppBar from 'material-ui/AppBar'
+import FlatButton from 'material-ui/FlatButton'
+import Paper from 'material-ui/Paper'
+import { Link } from 'react-router'
+import IconButton from 'material-ui/IconButton'
+import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
+import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
 
 
-const Hole = ({ score, holeNumber, onIncrementClick, onDecrementClick }) => {
+const Hole = ({ score, totalScore, holeNumber, onIncrementClick, onDecrementClick }) => {
   return (
     <div className="wrapper">
       <AppBar
@@ -27,21 +27,28 @@ const Hole = ({ score, holeNumber, onIncrementClick, onDecrementClick }) => {
         }
       />
       <div className="main">
-        <div className="scorer">
-          <FloatingActionButton
-            onClick={() => onDecrementClick(holeNumber)}
-          >
-            <ContentRemove />
-          </FloatingActionButton>
+        <div className="hole">
+          <div className="scorer">
+            <FloatingActionButton
+              onClick={() => onDecrementClick(holeNumber)}
+            >
+              <ContentRemove />
+            </FloatingActionButton>
 
-          <h1>{ score }</h1>
+            <h1>{ score }</h1>
 
-          <FloatingActionButton
-            onClick={ () => onIncrementClick(holeNumber) }
-          >
-            <ContentAdd />
-          </FloatingActionButton>
+            <FloatingActionButton
+              onClick={ () => onIncrementClick(holeNumber) }
+            >
+              <ContentAdd />
+            </FloatingActionButton>
+          </div>
+          <div className="totalScore">
+          <h2>Total : { totalScore }</h2>
+          </div>
         </div>
+        
+        
       </div>
 
       <Paper className="footer">
@@ -62,4 +69,4 @@ const Hole = ({ score, holeNumber, onIncrementClick, onDecrementClick }) => {
   );
 };
 
-export default Hole;
+export default Hole

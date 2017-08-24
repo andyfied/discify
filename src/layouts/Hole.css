@@ -3,12 +3,25 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+}
+
+.hole {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   height: 100%;
   width: 100%;
 }
 
-.scorer h1 {
+.hole h1 {
   font-size: 30vh;
   color: #FF9800;
   text-shadow: 0px 3px 2px #E65100;
+}
+
+.hole h2 {
+  color: #757575;
+  margin-top: 0;
 }

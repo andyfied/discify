@@ -16,7 +16,7 @@ import {grey800, lime100, lime600} from 'material-ui/styles/colors';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
 
-import discifyApp from './reducers/reducers';
+import discifyApp from './reducers';
 
 let store = createStore(
   discifyApp,
