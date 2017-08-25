@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import { Link } from 'react-router';
-import AppBar from 'material-ui/AppBar';
-import Paper from 'material-ui/Paper';
-import './result.css';
+import React, { Component } from 'react'
+import FlatButton from 'material-ui/FlatButton'
+import { Link } from 'react-router'
+import AppBar from 'material-ui/AppBar'
+import Paper from 'material-ui/Paper'
+import './result.css'
 
 class Result extends Component {
 
@@ -32,8 +32,8 @@ class Result extends Component {
           />
         </Paper>
       </div>
-    );
+    )
   }
 }
 
-export default Result;
+export default Result

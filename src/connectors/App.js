@@ -29,7 +29,7 @@ class _App extends React.Component {
   render() {
     return (
       <AppLayout />
-    );
+    )
   }
 }
 

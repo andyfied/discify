@@ -16,15 +16,15 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementClick: (holeNumber) => {
-      dispatch(incrementScore(holeNumber));
-      dispatch(incrementTotalScore());
+      dispatch(incrementScore(holeNumber))
+      dispatch(incrementTotalScore())
     },
     onDecrementClick: (holeNumber) => {
-      dispatch(decrementScore(holeNumber));
-      dispatch(decrementTotalScore());
+      dispatch(decrementScore(holeNumber))
+      dispatch(decrementTotalScore())
     },
     onAddHole: (holeNumber) => {
-      dispatch(addHole(holeNumber));
+      dispatch(addHole(holeNumber))
     }
   }
 }
@@ -32,12 +32,12 @@ const mapDispatchToProps = (dispatch) => {
 class _Hole extends React.Component {
 
   componentWillMount() {
-    this.props.onAddHole(this.props.holeNumber);
+    this.props.onAddHole(this.props.holeNumber)
   }
 
   componentDidUpdate() {
     // Make sure the hole is added. Probably not a pritty way of solving the problem 
-    this.props.onAddHole(this.props.holeNumber);
+    this.props.onAddHole(this.props.holeNumber)
   }
 
   render() {

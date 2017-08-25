@@ -1,29 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Router, Route, hashHistory } from 'react-router'
-import App from './connectors/App';
-import Result from './connectors/Result';
-import NoMatch from './components/NoMatch';
-import Hole from './connectors/Hole';
-import './index.css';
+import App from './connectors/App'
+import Result from './connectors/Result'
+import NoMatch from './components/NoMatch'
+import Hole from './connectors/Hole'
+import './index.css'
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {grey800, lime100, lime600} from 'material-ui/styles/colors';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import {grey800, lime100, lime600} from 'material-ui/styles/colors'
 
-import { createStore } from 'redux';
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import discifyApp from './reducers';
+import discifyApp from './reducers'
 
 let store = createStore(
   discifyApp,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+  )
 
-injectTapEventPlugin();
+injectTapEventPlugin()
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -42,7 +42,7 @@ const muiTheme = getMuiTheme({
     //clockCircleColor: fade(darkBlack, 0.07),
     //shadowColor: fullBlack,
   },
-});
+})
 
 ReactDOM.render((
   
@@ -57,4 +57,4 @@ ReactDOM.render((
     </MuiThemeProvider>
   </Provider>),
   document.getElementById('root')
-);
+)

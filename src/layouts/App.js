@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import RaisedButton from 'material-ui/RaisedButton';
-import { Link } from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton'
+import { Link } from 'react-router'
 
-import './App.css';
+import './App.css'
 
 
 class App extends Component {
@@ -21,8 +21,8 @@ class App extends Component {
             />
           </div>
         </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
