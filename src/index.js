@@ -1,11 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, hashHistory } from 'react-router'
-import App from './connectors/App'
-import Result from './connectors/Result'
-import NoMatch from './components/NoMatch'
-import Hole from './connectors/Hole'
+import { hashHistory } from 'react-router'
 import './index.css'
+
+import App from './connectors/App'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -13,10 +11,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {grey800, lime100, lime600} from 'material-ui/styles/colors'
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import logger from "redux-logger"
 
 import discifyApp from './reducers'
+
 
 let store = createStore(
   discifyApp,
@@ -48,12 +48,7 @@ ReactDOM.render((
   
   <Provider store={ store }>
     <MuiThemeProvider muiTheme={ muiTheme }>
-      <Router history={ hashHistory }>
-        <Route path="/" component={ App } />
-        <Route path="/track/results" component={ Result } />
-        <Route path="/track/:holeNumber" component={ Hole } />
-        <Route path="*" component={ NoMatch } />
-      </Router>
+      <App />
     </MuiThemeProvider>
   </Provider>),
   document.getElementById('root')
