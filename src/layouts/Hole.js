@@ -22,7 +22,7 @@ const Hole = ({ score, totalScore, holeNumber, onIncrementClick, onDecrementClic
         iconElementRight={
           <FlatButton 
             label="End game" 
-            containerElement={ <Link to={ "/track/results" } /> }
+            containerElement={ <Link to={ "/results" } /> }
           />
         }
       />

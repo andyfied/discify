@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Start from './connectors/Start'
 import Result from './connectors/Result'
 import NoMatch from './components/NoMatch'
@@ -45,10 +45,12 @@ function App() {
     <Provider store={ store }>
     <MuiThemeProvider muiTheme={ muiTheme }>
       <BrowserRouter>
-        <Route exact path="/" component={ Start } />
-        <Route path="/track/results" component={ Result } />
-        <Route path="/track/:holeNumber" component={ Hole } />
-        <Route path="*" component={ NoMatch } />
+        <Switch>
+          <Route exact path="/" component={ Start } />
+          <Route path="/results" component={ Result } />
+          <Route path="/track/:holeNumber" component={ Hole } />
+          <Route component={ NoMatch } />
+        </Switch>
       </BrowserRouter>
     </MuiThemeProvider>
   </Provider>
