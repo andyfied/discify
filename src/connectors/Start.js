@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { clearScore } from '../actions/results'
 import { clearHoles } from '../actions/holes'
-import AppLayout from '../layouts/App'
+import StartLayout from '../layouts/Start'
 
 const mapStateToProps = (state) => {
     return {}
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-class _App extends React.Component {
+class _Start extends React.Component {
 
   componentWillMount() {
     this.props.onClearScore()
@@ -28,14 +28,14 @@ class _App extends React.Component {
 
   render() {
     return (
-      <AppLayout />
+      <StartLayout />
     )
   }
 }
 
-const App = connect(
+const Start = connect(
     mapStateToProps,
     mapDispatchToProps
-)(_App)
+)(_Start)
 
-export default App
+export default Start

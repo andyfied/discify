@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
 import RaisedButton from 'material-ui/RaisedButton'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
-import './App.css'
+import './Start.css'
 
 
-class App extends Component {
+class Start extends Component {
 
   render() {
     return (
@@ -25,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Start

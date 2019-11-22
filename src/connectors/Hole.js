@@ -7,9 +7,9 @@ import HoleLayout from '../layouts/Hole'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    score: state.holes[ownProps.params.holeNumber],
+    score: state.holes[ownProps.match.params.holeNumber],
     totalScore: state.results.totalScore,
-    holeNumber: ownProps.params.holeNumber
+    holeNumber: ownProps.match.params.holeNumber
   }
 }
 
@@ -35,9 +35,18 @@ class _Hole extends React.Component {
     this.props.onAddHole(this.props.holeNumber)
   }
 
-  componentDidUpdate() {
-    // Make sure the hole is added. Probably not a pritty way of solving the problem 
-    this.props.onAddHole(this.props.holeNumber)
+  componentDidUpdate(prevProps) {
+    // Make sure the hole is added. Probably not a pritty way of solving the problem
+    const prevHole = parseInt(prevProps.holeNumber)
+    const nextHole = parseInt(this.props.holeNumber)
+
+    if (isNaN(prevHole) || isNaN(nextHole)) {
+      return
+    }
+
+    if (prevHole < nextHole) {
+      this.props.onAddHole(this.props.holeNumber)
+    }
   }
 
   render() {
