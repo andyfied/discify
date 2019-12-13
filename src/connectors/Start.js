@@ -3,9 +3,14 @@ import { connect } from 'react-redux'
 import { clearScore } from '../actions/results'
 import { clearHoles } from '../actions/holes'
 import StartLayout from '../layouts/Start'
+import { showInstallPrompt } from '../actions/installPrompt'
+
+let deferredPrompt;
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+      showInstallPrompt: state.installPrompt.showInstallPrompt,
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -15,31 +20,45 @@ const mapDispatchToProps = (dispatch) => {
     },
     onClearHoles : () => {
       dispatch(clearHoles())
+    },
+    onShowInstallPrompt: (show) => {
+      dispatch(showInstallPrompt(show))
     }
   }
 }
 
 class _Start extends React.Component {
-
   componentWillMount() {
     this.props.onClearScore()
     this.props.onClearHoles()
   }
 
+  onInstall() {
+    deferredPrompt.prompt();  // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then(choiceResult => {
+      if (choiceResult.outcome === 'dismissed') {
+        console.log("User dismissed the install dialog")
+        // TODO close install prompt
+      }
+      deferredPrompt = null;
+    })
+  }
+
   componentDidMount() {
     window.addEventListener('beforeinstallprompt', event => {
-      console.log("BEFORE INSTALL!")
 
-      if ((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true)  {
-        console.log("App already installed")
-        return false;
-      }
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      event.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = event;
+      
+      this.props.onShowInstallPrompt(true)
     })
   }
 
   render() {
     return (
-      <StartLayout />
+      <StartLayout showInstallPrompt={this.props.showInstallPrompt} onInstall={this.onInstall} />
     )
   }
 }
