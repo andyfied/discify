@@ -26,6 +26,17 @@ class _Start extends React.Component {
     this.props.onClearHoles()
   }
 
+  componentDidMount() {
+    window.addEventListener('beforeinstallprompt', event => {
+      console.log("BEFORE INSTALL!")
+
+      if ((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true)  {
+        console.log("App already installed")
+        return false;
+      }
+    })
+  }
+
   render() {
     return (
       <StartLayout />

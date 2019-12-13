@@ -36,6 +36,8 @@ class _Hole extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+
+    console.log("did update")
     // Make sure the hole is added. Probably not a pritty way of solving the problem
     const prevHole = parseInt(prevProps.holeNumber)
     const nextHole = parseInt(this.props.holeNumber)

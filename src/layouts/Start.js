@@ -1,28 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 
 import './Start.css'
 
+const action = (
+  <Button color="secondary" size="small">
+    Install
+  </Button>
+);
 
-class Start extends Component {
+const Start = ({ isOpen }) => (
+  <div className="App wrapper">
+    <div className="main">
+      <h1>Discify</h1>
+      <h2>Your number one score tracker</h2>
+      <Button
+        color="primary"
+        variant="contained">
+        <Link to="/track/1">Play!</Link>
+      </Button>
+    </div>
+  </div>
+  )
 
-  render() {
-    return (
-        <div className="App wrapper">
-          <div className="main">
-            <h1>Discify</h1>
-            <h2>Your number one score tracker</h2>
-            <RaisedButton 
-              label="Play!"
-              primary={true}
-              containerElement={ <Link to="/track/1" /> }
-            />
-          </div>
-        </div>
-    )
-  }
-}
-
-export default Start
+  export default Start
+  

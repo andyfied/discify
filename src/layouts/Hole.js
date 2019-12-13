@@ -1,68 +1,65 @@
 import React from 'react'
-import './Hole.css'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import ContentRemove from 'material-ui/svg-icons/content/remove'
-import AppBar from 'material-ui/AppBar'
-import FlatButton from 'material-ui/FlatButton'
-import Paper from 'material-ui/Paper'
 import { Link } from 'react-router-dom'
-import IconButton from 'material-ui/IconButton'
-import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right'
-import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left'
+import './Hole.css'
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import Fab from '@material-ui/core/Fab'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper'
+import IconButton from '@material-ui/core/IconButton'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { grey } from '@material-ui/core/colors';
 
 
 const Hole = ({ score, totalScore, holeNumber, onIncrementClick, onDecrementClick }) => {
   return (
     <div className="wrapper">
       <AppBar
-        title={ "Hole " + holeNumber }
         className="header"
-        showMenuIconButton={ false }
-        iconElementRight={
-          <FlatButton 
-            label="End game" 
-            containerElement={ <Link to={ "/results" } /> }
-          />
-        }
-      />
+      >
+        <Toolbar>
+          <h1 className="homeNumber">{ `Hole ${holeNumber}` }</h1>
+          <Button>
+            <Link to={ "/results" }>End game</Link>
+          </Button>
+        </Toolbar>
+      </AppBar>
       <div className="main">
         <div className="hole">
           <div className="scorer">
-            <FloatingActionButton
+            <Fab
+              color="primary"
               onClick={() => onDecrementClick(holeNumber)}
             >
-              <ContentRemove />
-            </FloatingActionButton>
+              <RemoveIcon style={{ color: grey[600] }} />
+            </Fab>
 
             <h1>{ score }</h1>
 
-            <FloatingActionButton
+            <Fab
+              color="primary"
               onClick={ () => onIncrementClick(holeNumber) }
             >
-              <ContentAdd />
-            </FloatingActionButton>
+              <AddIcon style={{ color: grey[600] }} />
+            </Fab>
           </div>
           <div className="totalScore">
           <h2>Total : { totalScore }</h2>
           </div>
         </div>
-        
-        
       </div>
 
       <Paper className="footer">
         <IconButton
           disabled={ holeNumber <= 1 ? true : false }
-          containerElement={ <Link to={ "/track/" + (Number(holeNumber) - 1) } /> }
         >
-          <ChevronLeft />
+          <Link to={ "/track/" + (Number(holeNumber) - 1) }><ChevronLeftIcon /></Link>
         </IconButton>
-        <IconButton
-          
-          containerElement={ <Link to={ "/track/" + (Number(holeNumber) + 1) } /> }
-        >
-          <ChevronRight />
+        <IconButton>
+          <Link to={ "/track/" + (Number(holeNumber) + 1) }><ChevronRightIcon /></Link>
         </IconButton>
       </Paper>
     </div>

@@ -7,9 +7,8 @@ import Result from './connectors/Result'
 import NoMatch from './components/NoMatch'
 import Hole from './connectors/Hole'
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import {grey800, lime100, lime600} from 'material-ui/styles/colors'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {grey, lime, orange} from '@material-ui/core/colors'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -21,29 +20,31 @@ let store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-const muiTheme = getMuiTheme({
+const theme = createMuiTheme({
   palette: {
-    primary1Color: lime600,
+    primary: { light: lime[300], main: lime[500], dark: lime[700] },
+    secondary: { light: orange[300], main: orange[500], dark: orange[700] },
+    primary1Color: lime[600],
     //primary2Color: cyan700,
     //primary3Color: grey400,
     //accent1Color: pinkA200,
     //accent2Color: grey100,
     //accent3Color: grey500,
-    textColor: grey800,
+    textColor: grey[800],
     //alternateTextColor: white,
-    canvasColor: lime100,
+    canvasColor: lime[100],
     //borderColor: grey300,
     //disabledColor: fade(darkBlack, 0.3),
     //pickerHeaderColor: cyan500,
     //clockCircleColor: fade(darkBlack, 0.07),
     //shadowColor: fullBlack,
   },
-})
+ });
 
 function App() {
   return (
     <Provider store={ store }>
-    <MuiThemeProvider muiTheme={ muiTheme }>
+    <MuiThemeProvider theme={ theme }>
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Start } />
